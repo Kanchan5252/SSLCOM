@@ -71,3 +71,5 @@ gem "tailwindcss-rails", "~> 2.3"
 # For haml
 gem "haml-rails", "~> 2.0"
 gem "html2haml"
+# Added devise for authentication
+gem "devise", "~> 4.9"
