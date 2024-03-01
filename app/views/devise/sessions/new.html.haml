@@ -1,0 +1,25 @@
+.bg-gray-100.h-screen
+  .grid.grid-cols-1.md:grid-cols-12.pt-16
+    .col-span-1.md:col-start-4.md:col-span-6
+      .bg-white.pb-3.sm:mx-3
+        .py-5.border-b-2.border-solid.border-inherit.bg-gray-200
+          = image_tag ("sslcom.png"), class: "h-8 text-black mx-auto", alt: 'sslcom'
+        %h2.mt-3.mb-5.text-2xl.text-center Login to your account
+        .mx-3
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .field.mb-5
+              = f.label :email, :class=>"font-medium"
+              = f.text_field :email, autofocus: true, autocomplete: "email", :class=>"mt-2 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", :placeholder=>"Email (name@example.com)"
+            .field.mb-5
+              = f.label :password, :class=>"font-medium"
+              = f.password_field :password, autocomplete: "new-password", :class=>"mt-2 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", :placeholder=>"password"
+            .py-3.border-b-2.border-solid.border-inherit
+            .flex.justify-between.items-center.mx-3.my-5
+              - if devise_mapping.rememberable?
+                .field.my-3.flex.items-center
+                  = f.check_box :remember_me, :class=>"w-5 h-5 text-lime-400 bg-gray-100 border-gray-300 rounded focus:ring-lime-400 mr-2 mt-1"
+                  = f.label :remember_me, :class=>"font-medium mt-1"
+              .actions
+                = f.submit "Member Login", :class => "rounded-lg bg-lime-400  font-medium text-white py-4 px-5 hover:bg-lime-500 cursor-pointer uppercase"
+      .text-center.text-lime-400.mt-4
+        = link_to "Need an account? Click here", new_registration_path(resource_name)

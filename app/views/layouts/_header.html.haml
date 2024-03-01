@@ -1,0 +1,11 @@
+%body
+  %header
+    %nav.bg-gray-100.px-1.md:px-5
+      .flex.flex-wrap.justify-between.items-center.mx-auto.max-w-screen-xl.p-4
+        %a.flex.items-center.space-x-3.rtl:space-x-reverse{:href => "#"}
+          = image_tag ("sslcom.png"), class: "h-8", alt: 'sslcom'
+        .flex.items-center.space-x-6.rtl:space-x-reverse
+          - if current_user.present?
+            = button_to "Logout", destroy_user_session_path, method: :delete, :class=>"text-sm text-black hover:text-lime-500"
+          - else
+            = link_to "Login with SSL.com account", new_user_session_path, :class=>"text-sm text-black hover:text-lime-500" if controller_name != 'sessions'
